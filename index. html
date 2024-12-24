@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #0a0a2e 0%, #16213e 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+        }
+
+        .scene {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .mensaje {
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 28px;
+            text-align: center;
+            color: white;
+            z-index: 5;
+            background: rgba(0,0,0,0.4);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 80%;
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(255,255,255,0.1);
+            animation: aparecer 2s forwards;
+        }
+
+        .mensaje h1 {
+            margin: 0;
+            font-size: 36px;
+            background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: colorCycle 5s infinite;
+        }
+
+        .tree {
+            position: absolute;
+            left: 50%;
+            bottom: 20%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .tree-layer {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: solid transparent;
+            border-right: solid transparent;
+            border-bottom: solid #0a4c0a;
+        }
+
+        .layer1 { 
+            border-left-width: 80px; 
+            border-right-width: 80px; 
+            border-bottom-width: 160px; 
+            bottom: 0; 
+        }
+
+        .layer2 { 
+            border-left-width: 65px; 
+            border-right-width: 65px; 
+            border-bottom-width: 130px; 
+            bottom: 80px; 
+        }
+
+        .layer3 { 
+            border-left-width: 50px; 
+            border-right-width: 50px; 
+            border-bottom-width: 100px; 
+            bottom: 160px; 
+        }
+
+        .star {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ffd700;
+            font-size: 40px;
+            animation: estrellaBrilla 1.5s infinite alternate;
+            z-index: 3;
+            filter: drop-shadow(0 0 10px rgba(255,215,0,0.8));
+        }
+
+        .sleigh {
+            position: absolute;
+            font-size: 60px;
+            z-index: 4;
+            animation: vueloTrineo 8s infinite linear;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.8));
+        }
+
+        .ground {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 20%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.8), white);
+            border-top: 2px solid rgba(255,255,255,0.9);
+            z-index: 1;
+        }
+
+        .gift {
+            position: absolute;
+            font-size: 30px;
+            animation: caerRegalo 2s forwards;
+            z-index: 3;
+        }
+
+        @keyframes colorCycle {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        @keyframes estrellaBrilla {
+            0% { transform: translateX(-50%) scale(1); }
+            100% { transform: translateX(-50%) scale(1.5); }
+        }
+
+        @keyframes vueloTrineo {
+            0% { left: -10%; top: 20%; transform: scale(1); }
+            45% { left: 45%; top: 30%; transform: scale(1.2); }
+            55% { left: 55%; top: 30%; transform: scale(1.2); }
+            100% { left: 110%; top: 20%; transform: scale(1); }
+        }
+
+        @keyframes caerRegalo {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(60vh) rotate(720deg); }
+        }
+
+        @keyframes aparecer {
+            0% { opacity: 0; transform: translate(-50%, -20px); }
+            100% { opacity: 1; transform: translate(-50%, 0); }
+        }
+
+        .ornament {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            animation: brillo 1.5s infinite alternate;
+        }
+
+        @keyframes brillo {
+            from { filter: brightness(0.5); }
+            to { filter: brightness(1.5); }
+        }
+
+        .snowflake {
+            position: fixed;
+            color: white;
+            font-size: 20px;
+            user-select: none;
+            animation: caer linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes caer {
+            from { transform: translateY(-10vh) rotate(0deg); }
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="scene">
+        <div class="mensaje">
+            <h1>✨ ¡Feliz Navidad! ✨</h1><br>
+            Para mi mejor amiga:<br><br>
+            En esta noche mágica de Navidad,<br>
+            quiero decirte que tu amistad es el<br>
+            regalo más valioso que tengo.<br>
+            ¡Que esta Navidad llene tu vida de<br>
+            amor, alegría y momentos inolvidables!<br><br>
+            🎄❤️🎄
+        </div>
+        
+        <div class="ground"></div>
+        
+        <div class="tree">
+            <div class="star">⭐</div>
+            <div class="tree-layer layer1"></div>
+            <div class="tree-layer layer2"></div>
+            <div class="tree-layer layer3"></div>
+        </div>
+
+        <div class="sleigh">🎅🦌🎁</div>
+    </div>
+
+    <script>
+        function crearOrnamentos() {
+            const colores = ['#ff0000', '#ffff00', '#00ff00', '#0000ff', '#ff00ff'];
+            const tree = document.querySelector('.tree');
+            
+            for(let i = 0; i < 30; i++) {
+                const ornament = document.createElement('div');
+                ornament.className = 'ornament';
+                ornament.style.left = Math.random() * 160 - 80 + 'px';
+                ornament.style.top = Math.random() * 300 + 'px';
+                ornament.style.backgroundColor = colores[Math.floor(Math.random() * colores.length)];
+                tree.appendChild(ornament);
+            }
+        }
+
+        function crearCopo() {
+            const copo = document.createElement('div');
+            copo.className = 'snowflake';
+            copo.style.left = Math.random() * 100 + 'vw';
+            copo.style.animationDuration = Math.random() * 3 + 2 + 's';
+            copo.innerHTML = '❄';
+            document.body.appendChild(copo);
+
+            copo.addEventListener('animationend', () => {
+                copo.remove();
+            });
+        }
+
+        function soltarRegalo() {
+            const sleigh = document.querySelector('.sleigh');
+            const rect = sleigh.getBoundingClientRect();
+            
+            if (rect.left > window.innerWidth * 0.45 && rect.left < window.innerWidth * 0.55) {
+                const regalo = document.createElement('div');
+                regalo.className = 'gift';
+                regalo.innerHTML = '🎁';
+                regalo.style.left = rect.left + 'px';
+                regalo.style.top = rect.top + 'px';
+                document.body.appendChild(regalo);
+
+                regalo.addEventListener('animationend', () => {
+                    regalo.remove();
+                });
+            }
+        }
+
+        // Iniciar efectos
+        crearOrnamentos();
+        setInterval(crearCopo, 100);
+        setInterval(soltarRegalo, 500);
+
+        // Interactividad
+        document.querySelector('.tree').addEventListener('click', function() {
+            const ornaments = this.querySelectorAll('.ornament');
+            ornaments.forEach(ornament => {
+                ornament.style.filter = 'brightness(1.5)';
+                setTimeout(() => {
+                    ornament.style.filter = '';
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>
